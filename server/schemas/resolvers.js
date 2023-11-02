@@ -41,7 +41,7 @@ const resolvers = {
             return Profile.findOneAndUpdate(
                 { _id: profileId },
                 {
-                $addToSet: { favorites: favorite },
+                    $addToSet: { favorites: favorite },
                 },
                 {
                     new: true,
