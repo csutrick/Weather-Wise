@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Ethan John",
+        "email": "ejohn123@weatherwise.dev",
+        "password": "password01",
+        "favorites": ["Shakopee", "Edina", "Minnetonka"]
+    },
+    {
+        "name": "Robert Sprole",
+        "email": "Robertspr@weatherwise.dev",
+        "password": "123password",
+        "favorites": ["Pheonix", "Greenbay", "Madison"]
+    }
+]
