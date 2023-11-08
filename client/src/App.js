@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -15,7 +15,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
-
+  
   return {
     headers: {
       ...headers,
@@ -33,24 +33,26 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Navbar />
-        <body className='flex flex-row justify-center items-center w-[300px] h-[300px] bg-red-400'>
-          <Routes>
-            <Route 
-              path="/" 
-              element={<Home />} 
-            />
-            <Route 
-              path="/login" 
-              element={<Login />} 
-            />
-            <Route 
-              path="/signup" 
-              element={<Signup />} 
-            />
-          </Routes>
-        </body>
-        <Footer />
+        <div className='w-full flex flex-col justify-center items-center'>
+          <Navbar />
+          <body>
+            <Routes>
+                <Route 
+                  path="/" 
+                  element={<Home />} 
+                />
+                <Route 
+                  path="/login" 
+                  element={<Login />} 
+                />
+                <Route 
+                  path="/signup" 
+                  element={<Signup />} 
+                />
+            </Routes>
+          </body>
+          <Footer />
+        </div>
       </Router>
     </ApolloProvider>
   );
