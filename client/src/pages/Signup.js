@@ -38,7 +38,7 @@ const Signup = () => {
     };
 
     return (
-        <body className=''>
+        <main className=''>
             {data ? (
                 <p>
                     Success! You may now head{' '}
@@ -83,7 +83,7 @@ const Signup = () => {
                     {error.message}
                 </div>
             )}
-        </body>
+        </main>
     );
 };
 

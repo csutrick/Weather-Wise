@@ -36,7 +36,7 @@ function App() {
       <Router>
         <div className='w-full flex flex-col justify-center items-center'>
           <Navbar />
-          <body>
+          <div>
             <Routes>
                 <Route 
                   path="/" 
@@ -55,7 +55,7 @@ function App() {
                   element={<Favorites />} 
                 />
             </Routes>
-          </body>
+          </div>
           <Footer />
         </div>
       </Router>

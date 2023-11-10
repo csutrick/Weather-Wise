@@ -36,46 +36,56 @@ const Login = (props) => {
   };
 
   return (
-    <body className=''>
-      {data ? (
-        <p>
-          Success! You may now head{' '}
-          <Link to="/">back to the homepage.</Link>
-        </p>
-      ) : (
-        <form onSubmit={handleFormSubmit}
-        className='flex flex-col'>
-          <input
-            className='bg-blue-300 text-white mb-2'
+    <main className='h-screen w-[1250px] mx-12 flex justify-center items-center'>
+      <div className='bg-gray-500 w-2/3 h-1/2 flex flex-col justify-center items-center rounded-lg drop-shadow-xl'>
+        <h2 className='text-white font-bold text-6xl mb-4'>Weather Wise</h2>
+        {data ? (
+          <p>
+            Success! You may now head{' '}
+            <Link to="/">back to the homepage.</Link>
+          </p>
+        ) : (
+          <form onSubmit={handleFormSubmit}
+          className='flex flex-col items-center w-2/3'>
+            <label className='pl-4 w-full text-left text-white font-bold text-sm'>Account Email:</label>
+            <input
+            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text'
             placeholder="Your email"
             name="email"
             type="email"
             value={formState.email}
             onChange={handleChange}
-          />
-          <input
-            className='bg-blue-300 text-white mb-2'
+            />
+            <label className='pl-4 w-full text-left text-white font-bold text-sm'>Account Password:</label>
+            <input
+            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text'
             placeholder="******"
             name="password"
             type="password"
             value={formState.password}
             onChange={handleChange}
-          />
-          <button
-            className='bg-black text-white'
-            style={{ cursor: 'pointer' }}
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
-      )}
-      {error && (
-        <div className="my-3 p-3 bg-danger text-white">
-          {error.message}
+            />
+            <button
+            className='bg-white text-black w-[100px] rounded-lg px-4 py-1 text-xl font-bold hover:bg-gray-200 hover:scale-105 hover:tracking-widest
+            transition-all duration-100 ease-in-out active:bg-gray-400'
+            type="submit">
+              Login
+            </button>
+          </form>
+        )}
+        {error && (
+          <div className='mt-2 text-red-500 font-bold'>
+            {error.message}
+          </div>
+        )}
+        <div className='mt-8 flex flex-col items-center justify-center'>
+          <h4 className='text-white font-bold'>Dont have an account?</h4>
+          <Link to="/signup">
+            <h4 className='text-blue-100 hover:text-blue-300 active:text-blue-500 hover:tracking-widest transition-all duration-100 ease-in-out'>Signup Page</h4>
+          </Link>
         </div>
-      )}
-    </body>
+      </div>
+    </main>
   );
 };
 
