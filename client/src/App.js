@@ -4,9 +4,10 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Home from './pages/Home';
+import Favorites from './pages/Favorites';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -48,6 +49,10 @@ function App() {
                 <Route 
                   path="/signup" 
                   element={<Signup />} 
+                />
+                <Route 
+                  path="/favorites" 
+                  element={<Favorites />} 
                 />
             </Routes>
           </body>
