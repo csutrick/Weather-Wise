@@ -21,7 +21,7 @@ const Navbar = () => {
           {Auth.loggedIn() ? (
             <Link to="/favorites" className='mr-3'>
               <h2 className='text-white font-bold text-2xl transition-all duration-100 ease-in-out
-          hover:scale-105 hover:text-gray-300 active:scale-110'>Favorites</h2>
+              hover:scale-105 hover:text-gray-300 active:scale-110'>Favorites</h2>
             </Link>
           ) : (
             <></>
