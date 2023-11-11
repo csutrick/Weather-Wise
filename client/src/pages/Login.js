@@ -37,10 +37,10 @@ const Login = (props) => {
 
   return (
     <main className='h-screen w-[1250px] mx-12 flex justify-center items-center'>
-      <div className='bg-gray-500 w-2/3 h-1/2 flex flex-col justify-center items-center rounded-lg drop-shadow-xl'>
+      <div className='bg-gray-500 w-2/3 p-4 flex flex-col justify-center items-center rounded-lg drop-shadow-xl'>
         <h2 className='text-white font-bold text-6xl mb-4'>Weather Wise</h2>
         {data ? (
-          <p>
+          <p className='mt-2 text-xl font-bold text-black'>
             Success! You may now head{' '}
             <Link to="/">back to the homepage.</Link>
           </p>
@@ -48,27 +48,21 @@ const Login = (props) => {
           <form onSubmit={handleFormSubmit}
           className='flex flex-col items-center w-2/3'>
             <label className='pl-4 w-full text-left text-white font-bold text-sm'>Account Email:</label>
-            <input
-            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text'
-            placeholder="Your email"
-            name="email"
-            type="email"
-            value={formState.email}
-            onChange={handleChange}
+            <input placeholder="Your email" name="email" type="email"
+            value={formState.email} onChange={handleChange}
+            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text drop-shadow-md focus:drop-shadow-xl focus:scale-[1.01]
+            transition-all duration-100 ease-in-out'
             />
             <label className='pl-4 w-full text-left text-white font-bold text-sm'>Account Password:</label>
-            <input
-            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text'
-            placeholder="******"
-            name="password"
-            type="password"
-            value={formState.password}
-            onChange={handleChange}
+            <input placeholder="******" name="password" type="password"
+            value={formState.password} onChange={handleChange}
+            className='bg-white text-black mb-8 w-full h-[40px] rounded-2xl pl-4 text-xl cursor-text drop-shadow-md focus:drop-shadow-xl focus:scale-[1.01]
+            transition-all duration-100 ease-in-out'
             />
-            <button
+            <button type="submit"
             className='bg-white text-black w-[100px] rounded-lg px-4 py-1 text-xl font-bold hover:bg-gray-200 hover:scale-105 hover:tracking-widest
-            transition-all duration-100 ease-in-out active:bg-gray-400'
-            type="submit">
+            transition-all duration-100 ease-in-out active:bg-gray-400 drop-shadow-md hover:drop-shadow-xl active:scale-110'
+            >
               Login
             </button>
           </form>
