@@ -1,29 +1,41 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-
-import { QUERY_PROFILES } from '../utils/queries';
-
-import ProfileForm from '../components/ProfileForm';
-import ProfileList from '../components/ProfileList';
+import React, { useState } from 'react';
 
 const Home = () => {
-    const { loading, data } = useQuery(QUERY_PROFILES);
-    const profiles = data?.profiles || [];
+  const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState(null);
 
-    return (
-        <main className='bg-green-300 w-[1250px] mx-12 flex flex-col justify-center items-center'>
-            <h1 className='text-4xl text-black font-bold mb-4'>Home Page</h1>
-            <ProfileForm />
-            {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Profiles and there Favorites"
-            />
+  const handleSearch = async () => {
+    try {
+      const { getWeatherData } = await import('../utils/getWeatherData');
+      const data = await getWeatherData(city);
+      setWeatherData(data);
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
+
+  return (
+      <main className='bg-green-300 w-[1250px] mx-12 p-4 flex flex-col justify-center items-center'>
+        <input placeholder="City name" name="userInput" type="text"
+        value={city} onChange={(e) => setCity(e.target.value)}
+        className='mb-2 bg-white text-black pl-1 rounded-lg w-[250px] h-[40px]'
+        />
+        <button type="button" onClick={handleSearch}
+        className='my-2 bg-white text-black px-4 py-1 font-bold active:bg-red-400'>
+          Search
+        </button>
+        {/* Result container */}
+        <div className='mt-2 bg-red-400 w-[250px] min-h-[400px]'>
+          {/* Display weather data here */}
+          {weatherData && (
+            <div>
+              <h2>Weather Data:</h2>
+              <pre>{JSON.stringify(weatherData, null, 2)}</pre>
+            </div>
           )}
-        </main>
-    );
+        </div>
+      </main>
+  );
 };
 
 export default Home;
