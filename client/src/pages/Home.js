@@ -6,11 +6,16 @@ const Home = () => {
 
   const handleSearch = async () => {
     try {
-      const { getWeatherData } = await import('../utils/getWeatherData');
-      const data = await getWeatherData(city);
-      setWeatherData(data);
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=adf18ae524fd38390fa6667d35153b0c`;
+     
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      const weatherData = data.main;
+
+      setWeatherData(weatherData);
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error('Error fetching weather data:', error.message);
     }
   };
 
