@@ -11,7 +11,7 @@ const Home = () => {
 
   const handleSearch = async () => {
     try {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=adf18ae524fd38390fa6667d35153b0c`;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=adf18ae524fd38390fa6667d35153b0c`;
      
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -47,9 +47,9 @@ const Home = () => {
   }, []);
 
   return (
-      <main className='bg-gray-800 w-[1250px] mx-12 flex flex-row'>
+      <main className='bg-white w-[1250px] mx-12 flex flex-row py-16'>
         {/* sidebar container */}
-        <div className='bg-red-300 w-1/4 flex flex-col p-2 items-center'>
+        <div className='bg-gray-300 w-1/4 flex flex-col p-2 items-center rounded-l-lg'>
           {/* user input container */}
           <div className='flex flex-row flex-nowrap w-full h-[50px] justify-center'>
             <input placeholder="Search cities" name="userInput" type="text"
@@ -77,7 +77,7 @@ const Home = () => {
           </div>
         </div>
         {/* search results container */}
-        <div className='bg-blue-300 flex-grow w-3/4'>
+        <div className='bg-gray-300 flex-grow w-3/4 rounded-r-lg'>
           <SearchResults weatherData={weatherData}/>
         </div>
       </main>
