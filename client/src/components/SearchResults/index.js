@@ -20,7 +20,7 @@ const SearchResults = ({ weatherData }) => {
                     const timestamp = new Date(weatherData.list[index].dt * 1000);
                     const timeString = timestamp.toLocaleTimeString(undefined, { hour12: true });
                     const timeWithoutSeconds = timeString.slice(0, 5) + timeString.slice(8, 11);
-                    
+
                     return (
                       <div key={index}
                       className='bg-gray-400 mx-4 my-2 border-2 border-black flex flex-col justify-center items-center p-2'>
