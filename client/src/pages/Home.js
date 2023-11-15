@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs'
+import { FaHeart } from "react-icons/fa";
 
 import SearchResults from '../components/SearchResults';
 
@@ -8,6 +9,7 @@ const Home = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [pastSearches, setPastSearches] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -46,8 +48,17 @@ const Home = () => {
     setPastSearches(savedCities);
   }, []);
 
+  const favToggle = () => {
+    setIsLiked((prevIsLiked) => !prevIsLiked);
+  };
+
   return (
-      <main className='bg-white w-[1250px] mx-12 flex flex-row py-16'>
+      <main className='bg-white w-[1250px] mx-12 flex flex-row py-16 relative'>
+        {/* favorite heart */}
+        <FaHeart onClick={favToggle}
+        className={`absolute right-4 top-20 text-3xl ${
+        isLiked ? 'text-red-500' : 'text-gray-300'}
+        hover:text-red-600 hover:scale-105 active:scale-110 transition-all duration-100 ease-in-out`}/>
         {/* sidebar container */}
         <div className='bg-gray-300 w-1/4 flex flex-col p-2 items-center rounded-l-lg'>
           {/* user input container */}
