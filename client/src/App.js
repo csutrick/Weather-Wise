@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Home from './pages/Home';
+import Search from './pages/Search';
 import Favorites from './pages/Favorites';
 import Footer from './components/Footer';
 
@@ -40,7 +40,7 @@ function App() {
             <Routes>
                 <Route 
                   path="/" 
-                  element={<Home />} 
+                  element={<Search />} 
                 />
                 <Route 
                   path="/login" 
