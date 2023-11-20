@@ -22,6 +22,16 @@ export const ADD_FAVORITE = gql`
   }
 `;
 
+export const REMOVE_FAVORITE = gql`
+  mutation removeFavorite($profileId: ID!, $favorite: String!) {
+    removeFavorite(profileId: $profileId, favorite: $favorite) {
+      _id
+      name
+      favorites
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
