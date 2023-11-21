@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Favorite from '../../components/Favorite';
+import Favorite from '../FavoriteButton';
 
 const SearchResults = ({ weatherData }) => {
   return (
-    <section className='flex-grow flex flex-col items-center justify-center p-2'>
+    <section className='flex-grow flex flex-col items-center justify-center p-2 drop-shadow-md'>
       {weatherData ? (
         <div className='bg-white w-[100%] flex flex-col justify-center items-center p-2 border-2 border-black rounded-lg'>
           <Favorite favorite={weatherData.city.name}/>

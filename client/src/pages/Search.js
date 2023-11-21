@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Sidebar from '../components/Sidebar'
+import Favorites from '../components/Favorites';
 import SearchResults from '../components/SearchResults';
 
 const Search = () => {
@@ -27,11 +28,14 @@ const Search = () => {
   };
 
   return (
-      <main className='bg-gray-300 w-[1250px] my-20 mx-12 flex flex-row rounded-lg'>
-        {/* sidebar container */}
-        <Sidebar setCity={setCity} handleSearch={handleSearch}/>
-        {/* Results container */}
-        <SearchResults weatherData={weatherData}/>
+      <main className='bg-gray-300 w-[1250px] flex flex-col mb-16 mt-28 mx-12 rounded-lg drop-shadow-xl'>
+        <Favorites />
+        <div className='flex flex-row'>
+          {/* sidebar container */}
+          <Sidebar setCity={setCity} handleSearch={handleSearch}/>
+          {/* Results container */}
+          <SearchResults weatherData={weatherData}/>
+        </div>
       </main>
   );
 };
