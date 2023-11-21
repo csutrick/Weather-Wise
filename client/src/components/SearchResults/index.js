@@ -2,12 +2,12 @@ import React from 'react';
 
 import Favorite from '../../components/Favorite';
 
-const SearchResults = ({ weatherData }) => {
+const SearchResults = ({ weatherData, isFavorite }) => {
   return (
     <section className='flex-grow flex flex-col items-center justify-center p-2'>
       {weatherData ? (
         <div className='bg-white w-[100%] flex flex-col justify-center items-center p-2 border-2 border-black rounded-lg'>
-          <Favorite favorite={weatherData.city.name}/>
+          <Favorite favorite={weatherData.city.name} isFavorite={isFavorite}/>
           {/* current weather */}
           <h2 className='text-black font-bold text-5xl underline tracking-wider'>{weatherData.city.name}</h2>
           <h2 className='text-black font-bold text-6xl my-6'>{weatherData.list[0].main.temp}&deg;F</h2>
