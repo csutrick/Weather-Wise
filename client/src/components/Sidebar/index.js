@@ -8,7 +8,7 @@ const Sidebar = ({ setCity, handleSearch }) => {
     const [pastSearches, setPastSearches] = useState([]);
 
     const onButtonClick = () => {
-        console.log("Search Button Clicked");
+        console.log("Input search button clicked");
         setCity(inputCity);
         handleSearch(inputCity);
 
