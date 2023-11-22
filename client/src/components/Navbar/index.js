@@ -1,28 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import { IoMdSettings } from 'react-icons/io'
 
 const Navbar = () => {
+  const [settings, showSettings] = useState(false);
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    try {
+      const token = Auth.getProfile();
+      let user = token.data.name;
+      if(user.includes(' ')) {
+        user = user.split(' ')[0]; 
+      };
+      setUsername(user);
+    } catch {}
+  }, []);
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
-  const [settings, showSettings] = useState(false);
+
   return (
-    <nav className='bg-gray-600 w-full flex flex-row justify-center items-center z-50'>
+    <nav className='absolute top-0 bg-gray-600 w-full flex flex-row justify-center items-center z-50'>
       <div className='w-[1250px] h-full flex flex-row justify-between items-center py-2'>
         <Link to="/">
           <h1 className='text-white font-bold text-4xl transition-all duration-100 ease-in-out
           hover:scale-105 hover:text-gray-300 active:scale-110 tracking-wide'>Weather Wise</h1>
         </Link>
-        <div className='relative flex flex-row items-center justify-center'>
+        <div className='relative flex flex-row items-end justify-center'>
           {Auth.loggedIn() ? (
-            <Link to="/favorites" className='mr-3'>
-              <h2 className='text-white font-bold text-2xl transition-all duration-100 ease-in-out
-              hover:scale-105 hover:text-gray-300 active:scale-110'>Favorites</h2>
-            </Link>
+            <h1 className='text-white font-bold text-lg text-center'>
+              Welcome, {username}
+            </h1>
           ) : (
             <></>
           )}
