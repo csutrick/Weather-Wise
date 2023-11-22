@@ -7,7 +7,6 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Search from './pages/Search';
-import Favorites from './pages/Favorites';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -34,30 +33,22 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='w-full flex flex-col justify-center items-center'>
           <Navbar />
-          <div>
-            <Routes>
-                <Route 
-                  path="/" 
-                  element={<Search />} 
-                />
-                <Route 
-                  path="/login" 
-                  element={<Login />} 
-                />
-                <Route 
-                  path="/signup" 
-                  element={<Signup />} 
-                />
-                <Route 
-                  path="/favorites" 
-                  element={<Favorites />} 
-                />
-            </Routes>
-          </div>
+          <Routes>
+              <Route 
+                path="/" 
+                element={<Search />} 
+              />
+              <Route 
+                path="/login" 
+                element={<Login />} 
+              />
+              <Route 
+                path="/signup" 
+                element={<Signup />} 
+              />
+          </Routes>
           <Footer />
-        </div>
       </Router>
     </ApolloProvider>
   );
