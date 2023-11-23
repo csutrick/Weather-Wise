@@ -26,21 +26,21 @@ const Navbar = () => {
 
   return (
     <nav className='absolute top-0 bg-gray-600 w-full flex flex-row justify-center items-center z-50'>
-      <div className='w-[1250px] h-full flex flex-row justify-between items-center py-2'>
+      <div className='w-[1250px] h-full flex flex-row justify-between items-center mx-12 py-2'>
         <Link to="/">
-          <h1 className='text-white font-bold text-4xl transition-all duration-100 ease-in-out
+          <h1 className='text-white font-bold text-2xl md:text-4xl transition-all duration-100 ease-in-out
           hover:scale-105 hover:text-gray-300 active:scale-110 tracking-wide'>Weather Wise</h1>
         </Link>
         <div className='relative flex flex-row items-end justify-center'>
           {Auth.loggedIn() ? (
-            <h1 className='text-white font-bold text-lg text-center'>
+            <h1 className='text-white font-bold text-base md:text-lg text-center'>
               Welcome, {username}
             </h1>
           ) : (
             <></>
           )}
           <IoMdSettings onClick={() => showSettings(!settings)}
-          className='ml-3 text-white font-bold text-4xl transition-all duration-100 ease-in-out
+          className='ml-2 md:ml-3 text-white font-bold text-3xl md:text-4xl transition-all duration-100 ease-in-out
           hover:scale-105 hover:text-gray-300 active:scale-110'/>
           {settings && (
             <div className='absolute top-12 right-0 p-2 flex flex-col items-center justify-center

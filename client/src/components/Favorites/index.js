@@ -1,5 +1,6 @@
 import React from "react";
 
+// Add a toggle button to collaspe the favorites component
 const Favorites = () => {
     return (
         <section className='bg-white flex flex-row w-[100%] justify-center items-center py-2 rounded-lg border-2 border-black'>
