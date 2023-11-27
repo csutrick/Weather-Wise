@@ -6,7 +6,7 @@ export const getWeather = async (city) => {
 
         if (response.ok) {
             const weatherData = await response.json();
-            console.log("Found weather data");
+            console.log(`Found weather for ${city}`);
             return weatherData;
         };
     } catch (error) {
