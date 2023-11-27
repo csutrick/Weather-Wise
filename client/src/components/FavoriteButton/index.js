@@ -34,7 +34,7 @@ const Favorite = ({ favorite }) => {
 
     return (
         <FaHeart onClick={handleFavorite}
-        className={`absolute right-[63px] top-[150px] text-4xl ${
+        className={`ml-2 text-4xl ${
         isLiked ? 'text-red-500' : 'text-gray-300'}
         hover:text-red-600 active:text-red-400 hover:scale-105 active:scale-110 transition-all duration-100 ease-in-out`}/>
     );
