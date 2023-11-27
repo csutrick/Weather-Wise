@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { getWeather } from '../utils/getWeather'
+
 import Favorites from '../components/Favorites';
 import Sidebar from '../components/Sidebar';
 import SearchResults from '../components/SearchResults';
@@ -9,21 +11,11 @@ const Search = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   const handleSearch = async (searchCity) => {
-    console.log(`Sending API request for ${searchCity}`);
-
     try {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=imperial&appid=adf18ae524fd38390fa6667d35153b0c`;
-      const response = await fetch(apiUrl);
-
-      if(response.ok) {
-        const weatherData = await response.json();
-        setWeatherData(weatherData);
-        console.log(`Weather for ${searchCity} found`)
-      } else {
-        console.error(`Error: ${response.status} - ${response.statusText}`);
-      }
+      const data = await getWeather(searchCity);
+      setWeatherData(data);
     } catch (error) {
-      console.error('Error fetching weather data:', error.message);
+      console.error('Error handling search:', error.message);
     }
   };
 
