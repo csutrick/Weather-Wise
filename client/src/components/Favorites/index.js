@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
+import Auth from '../../utils/auth'
 
 import { FaArrowDown } from "react-icons/fa";
 
@@ -15,11 +18,27 @@ const Favorites = () => {
                 <></>
             ) : (
                 <div className='w-[100%] flex flex-row flex-wrap justify-evenly mt-1'>
-                    <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 1</div>
-                    <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 2</div>
-                    <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 3</div>
-                    <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 4</div>
-                    <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 5</div>
+                    {Auth.loggedIn() ? (
+                        <div>
+                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 1</div>
+                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 2</div>
+                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 3</div>
+                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 4</div>
+                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 5</div>
+                        </div>
+                    ) : (
+                        <span className='flex flex-row justify-center items-center'>
+                            <Link className='text-black font-bold text-lg py-1 px-3 transition-all duration-100 ease-in-out
+                            hover:scale-105 hover:text-gray-300 active:scale-110' to="/login">
+                                Login
+                            </Link>
+                            <p className='text-black font-bold text-base'>or</p>
+                            <Link className='text-black font-bold text-lg py-1 px-3 transition-all duration-100 ease-in-out
+                            hover:scale-105 hover:text-gray-300 active:scale-110' to="/signup">
+                                Signup
+                            </Link>
+                        </span>
+                    )}
                 </div>
             )}
         </section>

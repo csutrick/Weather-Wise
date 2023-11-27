@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Auth from '../../utils/auth'
 
 import FavoriteButton from '../FavoriteButton'
 
@@ -48,7 +51,21 @@ const SearchResults = ({ weatherData }) => {
         </div>
       ) : (
         <div className='bg-white w-[100%] h-[100%] flex justify-center items-center rounded-lg'>
-          <h2 className='text-black font-bold text-2xl'>No data to display</h2>
+          {Auth.loggedIn() ? (
+            <h2 className='text-black font-bold text-2xl'>No data to display</h2>       
+          ) : (
+            <span className='flex flex-row justify-center items-center'>
+              <Link className='text-black font-bold text-2xl py-1 px-3 transition-all duration-100 ease-in-out
+              hover:scale-105 hover:text-gray-300 active:scale-110' to="/login">
+                  Login
+              </Link>
+              <p className='text-black font-bold text-base'>or</p>
+              <Link className='text-black font-bold text-2xl py-1 px-3 transition-all duration-100 ease-in-out
+              hover:scale-105 hover:text-gray-300 active:scale-110' to="/signup">
+                  Signup
+              </Link>
+            </span>
+          )}
         </div>
       )}
     </section>
