@@ -7,14 +7,21 @@ import { QUERY_SINGLE_PROFILE } from '../../utils/queries';
 
 import { FaArrowDown } from "react-icons/fa";
 
-const Favorites = () => {
+const Favorites = ({ setCity, handleSearch }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [favoriteCity, setFavoriteCity] = useState('');
     const profileId = '6551a7f799b3d666d01cb04a'; //Update to token to get ID
 
     const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
         variables: { profileId: profileId },
     });
     const favorites = data?.profile.favorites || {};
+
+    const favoriteClick = (favorite) => {
+        console.log(`Selected Favorite: ${favorite}`);
+        setCity(favorite);
+        handleSearch(favorite);
+    }
 
     return (
         <section className='relative bg-white flex flex-col w-[100%] justify-center items-center p-2 rounded-lg border-2 border-black'>
@@ -30,7 +37,7 @@ const Favorites = () => {
                         <div className='flex flex-row flex-wrap justify-evenly'>
                             {favorites.length > 0 ? (
                                 favorites.map((favorite) => (
-                                    <p key={favorite}
+                                    <p key={favorite} onClick={() => favoriteClick(favorite)}
                                     className='mx-1 my-1 text-xl font-bold border-2 border-black rounded-lg px-3 py-1
                                     bg-white hover:bg-blue-100 hover:scale-[1.06] active:scale-[1.1] transition-all duration-100 ease-in-out'>
                                         {favorite}
