@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
 import Auth from '../../utils/auth'
+import { QUERY_SINGLE_PROFILE } from '../../utils/queries';
 
 import { FaArrowDown } from "react-icons/fa";
 
-const Favorites = () => {
+const Favorites = ({ setCity, handleSearch }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [favoriteCity, setFavoriteCity] = useState('');
+    const profileId = '6551a7f799b3d666d01cb04a'; //Update to token to get ID
+
+    const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
+        variables: { profileId: profileId },
+    });
+    const favorites = data?.profile.favorites || {};
+
+    const favoriteClick = (favorite) => {
+        console.log(`Selected Favorite: ${favorite}`);
+        setCity(favorite);
+        handleSearch(favorite);
+    }
 
     return (
         <section className='relative bg-white flex flex-col w-[100%] justify-center items-center p-2 rounded-lg border-2 border-black'>
@@ -17,14 +32,20 @@ const Favorites = () => {
             {isCollapsed ? (
                 <></>
             ) : (
-                <div className='w-[100%] flex flex-row flex-wrap justify-evenly mt-1'>
+                <div className='w-[100%] mt-1'>
                     {Auth.loggedIn() ? (
-                        <div>
-                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 1</div>
-                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 2</div>
-                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 3</div>
-                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 4</div>
-                            <div className='w-[150px] h-[100px] bg-gray-400 text-white font-bold rounded-md flex items-center justify-center border-2 border-black m-1'>Favorite 5</div>
+                        <div className='flex flex-row flex-wrap justify-evenly'>
+                            {favorites.length > 0 ? (
+                                favorites.map((favorite) => (
+                                    <p key={favorite} onClick={() => favoriteClick(favorite)}
+                                    className='mx-1 my-1 text-xl font-bold border-2 border-black rounded-lg px-3 py-1
+                                    bg-white hover:bg-blue-100 hover:scale-[1.06] active:scale-[1.1] transition-all duration-100 ease-in-out'>
+                                        {favorite}
+                                    </p> 
+                                ))
+                            ) : (
+                                <p className='text-xl font-bold'>No favorites saved yet</p>
+                            )}
                         </div>
                     ) : (
                         <span className='flex flex-row justify-center items-center'>
@@ -44,5 +65,5 @@ const Favorites = () => {
         </section>
     );
 };
-  
+
 export default Favorites;
