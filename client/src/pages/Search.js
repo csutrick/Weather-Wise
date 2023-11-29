@@ -39,7 +39,7 @@ const Search = () => {
           <Favorites setCity={setCity} handleSearch={handleSearch} favorites={favorites}/>
           <div className='flex flex-col md:flex-row mt-2 p-2 border-2 border-black rounded-lg'>
             <Sidebar setCity={setCity} handleSearch={handleSearch}/>
-            <SearchResults weatherData={weatherData} profileId={profileId} favorites={favorites}/>
+            <SearchResults weatherData={weatherData} profileId={profileId} favorites={favorites} setFavorites={setFavorites}/>
           </div>
         </div>
       </main>
