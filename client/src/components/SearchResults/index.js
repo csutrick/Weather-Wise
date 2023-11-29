@@ -5,14 +5,14 @@ import Auth from '../../utils/auth'
 
 import FavoriteButton from '../FavoriteButton'
 
-const SearchResults = ({ weatherData, profileId, favorites }) => {
+const SearchResults = ({ weatherData, profileId, favorites, setFavorites }) => {
   return (
     <section className='bg-red-300 ml-0 md:ml-1 w-[100%] h-[100%] rounded-lg border-2 border-black mt-4 md:mt-0'>
       {weatherData ? (
         <div className='bg-white w-[100%] h-[100%] flex flex-col items-center rounded-lg p-2'>
           <span className='flex flex-row flex-nowrap items-center border-b-4 border-black px-4'>
             <h2 className='text-black font-bold text-5xl tracking-wider'>{weatherData.city.name}</h2>
-            <FavoriteButton profileId={profileId} city={weatherData.city.name} favorites={favorites}/>
+            <FavoriteButton profileId={profileId} city={weatherData.city.name} favorites={favorites} setFavorites={setFavorites}/>
           </span>
           <h2 className='text-black font-bold text-6xl my-6'>{weatherData.list[0].main.temp}&deg;F</h2>
           <h2 className='text-black text-base'>{weatherData.list[0].wind.speed} MPH Wind</h2>
