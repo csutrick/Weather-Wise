@@ -36,7 +36,7 @@ const Search = () => {
   return (
       <main className='w-full h-fit flex justify-center mt-28 mb-16'>
         <div className='bg-gray-300 w-[1250px] mx-12 flex flex-col p-2 rounded-lg'>
-          <Favorites setCity={setCity} handleSearch={handleSearch} favorites={favorites}/>
+          <Favorites setCity={setCity} handleSearch={handleSearch} favorites={favorites} setFavorites={setFavorites} profileId={profileId}/>
           <div className='flex flex-col md:flex-row mt-2 p-2 border-2 border-black rounded-lg'>
             <Sidebar setCity={setCity} handleSearch={handleSearch}/>
             <SearchResults weatherData={weatherData} profileId={profileId} favorites={favorites} setFavorites={setFavorites}/>
