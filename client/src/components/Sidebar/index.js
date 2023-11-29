@@ -15,8 +15,10 @@ const Sidebar = ({ city, handleSearch }) => {
         console.log("Search Button Clicked");
         handleSearch(inputCity);
 
+        const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+        const capitalizedCity = capitalizeFirstLetter(inputCity);
         const savedCities = JSON.parse(localStorage.getItem('pastSearches')) || [];
-        const updatedCities = [inputCity, ...savedCities.filter(savedCity => savedCity !== inputCity)];
+        const updatedCities = [capitalizedCity, ...savedCities.filter(savedCity => savedCity !== capitalizedCity)];
         localStorage.setItem('pastSearches', JSON.stringify(updatedCities));
         setPastSearches(updatedCities);
     };
