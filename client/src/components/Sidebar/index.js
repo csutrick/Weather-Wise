@@ -3,13 +3,16 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs';
 
-const Sidebar = ({ setCity, handleSearch }) => {
+const Sidebar = ({ city, handleSearch }) => {
     const [inputCity, setInputCity] = useState('');
     const [pastSearches, setPastSearches] = useState([]);
 
+    useEffect(() => {
+        setInputCity(city)
+    }, [city]);
+
     const onButtonClick = () => {
         console.log("Search Button Clicked");
-        setCity(inputCity);
         handleSearch(inputCity);
 
         const savedCities = JSON.parse(localStorage.getItem('pastSearches')) || [];
