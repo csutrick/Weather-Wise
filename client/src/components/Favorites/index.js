@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
 
 import Auth from '../../utils/auth'
-import { QUERY_SINGLE_PROFILE } from '../../utils/queries';
 
 import { FaArrowDown } from "react-icons/fa";
 
-const Favorites = ({ setCity, handleSearch }) => {
+const Favorites = ({ setCity, handleSearch, favorites }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
-    const [favoriteCity, setFavoriteCity] = useState('');
-    const profileId = '6551a7f799b3d666d01cb04a'; //Update to token to get ID
-
-    const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-        variables: { profileId: profileId },
-    });
-    const favorites = data?.profile.favorites || {};
 
     const favoriteClick = (favorite) => {
         console.log(`Selected Favorite: ${favorite}`);

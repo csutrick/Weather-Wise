@@ -1,36 +1,35 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { ADD_FAVORITE, REMOVE_FAVORITE } from '../../utils/mutations';
 
 import { FaHeart } from "react-icons/fa";
 
-const Favorite = ({ favorite }) => {
+const Favorite = ({ profileId, city, favorites }) => {
     const [isLiked, setIsLiked] = useState(false);
-    const profileId = '6551a7f799b3d666d01cb04a';
 
     const [addFavorite, { addError }] = useMutation(ADD_FAVORITE);
     const [removeFavorite, { removeError }] = useMutation(REMOVE_FAVORITE);
 
+    const isCityInFavorites = () => {
+        return favorites.includes(city);
+    };
+
     const handleFavorite = async () => {
-        console.log(`${favorite} favorite button clicked`)
-        try {
-            if (isLiked) {
-                await removeFavorite({
-                    variables: { profileId, favorite },
-                });
-                console.log(`${favorite} removed from favorites`);
-            } else {
-                await addFavorite({
-                    variables: { profileId, favorite },
-                });
-                console.log(`${favorite} added to favorites`);
-            }
-            setIsLiked((prevIsLiked) => !prevIsLiked);
-        } catch (error) {
-            console.error('Error:', error.message);
+        console.log(`${city} favorite button clicked`);
+        
+        if (isCityInFavorites()) {
+            console.log(`${city} is in favorites!`);
+            setIsLiked(true)
+        } else {
+            console.log(`${city} is not in favorites.`);
+            setIsLiked(false)
         }
     };
+
+    useEffect(() => {
+        handleFavorite();
+    }, [city]);
 
     return (
         <FaHeart onClick={handleFavorite}
