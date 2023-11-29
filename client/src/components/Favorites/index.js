@@ -9,14 +9,13 @@ import Auth from '../../utils/auth'
 import { FaArrowDown } from "react-icons/fa";
 import { BsFillTrashFill } from 'react-icons/bs';
 
-const Favorites = ({ setCity, handleSearch, favorites, setFavorites, profileId }) => {
+const Favorites = ({ handleSearch, favorites, setFavorites, profileId }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const [removeFavorite, { removeError }] = useMutation(REMOVE_FAVORITE);
 
     const favoriteClick = (favorite) => {
         console.log(`Selected Favorite: ${favorite}`);
-        setCity(favorite);
         handleSearch(favorite);
     };
 
@@ -29,7 +28,7 @@ const Favorites = ({ setCity, handleSearch, favorites, setFavorites, profileId }
     };
 
     return (
-        <section className='relative bg-white flex flex-col w-[100%] justify-center items-center p-2 rounded-lg border-2 border-black'>
+        <section className='relative bg-white flex flex-col w-[100%] justify-center items-center py-1 px-2  rounded-lg border-2 border-black'>
             <FaArrowDown onClick={() => setIsCollapsed((prevCollapsed) => !prevCollapsed)}
             className={`absolute top-1 right-1 text-gray-300 hover:text-gray-500 active:text-gray-800 text-2xl
             hover:scale-110 active:scale-125 transition-all duration-200 ease-in-out ${ isCollapsed ? 'rotate-180' : 'rotate-0' }`}/>
@@ -42,7 +41,7 @@ const Favorites = ({ setCity, handleSearch, favorites, setFavorites, profileId }
                         <div className='flex flex-row flex-wrap justify-evenly'>
                             {favorites.length > 0 ? (
                                 favorites.map((favorite) => (
-                                    <div key={favorite} className='flex flex-row items-center flex-nowrap
+                                    <div key={favorite} className='flex flex-row items-center flex-nowrap mx-2 my-1
                                     bg-white hover:bg-blue-100 border-2 border-black rounded-lg hover:scale-[1.06] active:scale-[1.1] transition-all duration-100 ease-in-out'>
                                         <p onClick={() => favoriteClick(favorite)}
                                         className='text-xl font-bold pl-2 pr-3 py-1'>
