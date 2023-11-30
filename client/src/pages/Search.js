@@ -24,12 +24,14 @@ const Search = () => {
   };
 
   useEffect(() => {
-    const token = Auth.getProfile()
-    if (token) {
+    let token;
+    
+    if (Auth.loggedIn()) {
+      token = Auth.getProfile()
       console.log(`${token.data.name} logged in`);
       setFavorites(token.data.favorites);
       setProfile(token.data._id);
-    } else{
+    } else {
       console.log("User not logged in")
     }
   }, []);
