@@ -46,8 +46,6 @@ const Navbar = () => {
           {settings && (
             <div className='absolute top-12 right-0 p-2 flex flex-col items-center justify-center
             bg-gray-600 rounded-lg'>
-              <h3 className='text-white font-bold text-lg py-1 px-4 transition-all duration-100 ease-in-out
-                hover:scale-105 hover:text-gray-300 active:scale-110'>Info</h3>
               {Auth.loggedIn() ? (
                 <>
                   <button onClick={logout} className='text-white font-bold text-lg py-1 px-4 transition-all duration-100 ease-in-out
