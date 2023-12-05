@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer className='w-full flex flex-row justify-center items-center pb-16'>
-      <div className='bg-gray-600 w-[1250px] p-8 mx-12 flex flex-row justify-between items-end rounded-2xl'>
+      <div className='bg-gray-600 w-[1250px] p-8 mx-12 flex flex-row justify-between items-end rounded-2xl drop-shadow-md'>
         <ul className=''>
           <Link to="/">
             <li className='mb-2 w-min text-xl font-bold text-white hover:text-gray-200 active:text-gray-300 active:scale-105 hover:tracking-widest 
@@ -48,7 +48,7 @@ const Footer = () => {
             <label className='mb-1 text-white font-bold drop-shadow-md'>View Project Code</label>
               <a href="https://github.com/csutrick/Weather-Wise" target="_blank" rel="noopener noreferrer"
               className='bg-white flex justify-center w-[100%] px-10 py-1 rounded-lg text-4xl drop-shadow-md hover:drop-shadow-lg active:drop-shadow-xl
-              hover:scale-105 active:scale-110 hover:bg-green-400 active:bg-green-300 hover:text-white active:text-gray-100 transition-all duration-150 ease-in-out'>
+              hover:scale-105 active:scale-110 hover:bg-blue-400 active:bg-blue-300 hover:text-white active:text-gray-100 transition-all duration-150 ease-in-out'>
                 <FaFileCode />
               </a>
           </div>

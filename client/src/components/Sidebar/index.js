@@ -13,6 +13,7 @@ const Sidebar = ({ city, handleSearch }) => {
 
     const onButtonClick = () => {
         console.log("Search Button Clicked");
+        // Check if user is logged in, if they try and search without being logged in then make searchbar red, if user logged in then do normal
         handleSearch(inputCity);
 
         const savedCities = JSON.parse(localStorage.getItem('pastSearches')) || [];
@@ -36,7 +37,7 @@ const Sidebar = ({ city, handleSearch }) => {
     }, []);
 
     return (
-        <section className='flex flex-col w-[100%] md:w-1/3 rounded-lg mr-1'>
+        <section className='flex flex-col w-[100%] md:w-1/3 rounded-lg mr-1 drop-shadow-md'>
             <div className='w-[100%] h-[40px] flex flex-row mb-1 hover:scale-[1.02] active:scale-[1.03] drop-shadow-md active:drop-shadow-lg'>
                 {/* search bar */}
                 <input placeholder="Search cities" name="userInput" type="text"

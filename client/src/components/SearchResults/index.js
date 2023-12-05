@@ -7,7 +7,7 @@ import FavoriteButton from '../FavoriteButton'
 
 const SearchResults = ({ weatherData, profileId, favorites, setFavorites }) => {
   return (
-    <section className='bg-red-300 ml-0 md:ml-1 w-[100%] h-[100%] rounded-lg border-2 border-black mt-4 md:mt-0'>
+    <section className='bg-red-300 ml-0 md:ml-1 w-[100%] h-[100%] rounded-lg border-2 border-black mt-4 md:mt-0 drop-shadow-md'>
       {weatherData ? (
         <div className='bg-white w-[100%] h-[100%] flex flex-col items-center rounded-lg p-2'>
           <span className='flex flex-row flex-nowrap items-center border-b-4 border-black px-4'>
