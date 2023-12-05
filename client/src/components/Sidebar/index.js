@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Auth from '../../utils/auth'
+
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs';
 
@@ -13,13 +15,16 @@ const Sidebar = ({ city, handleSearch }) => {
 
     const onButtonClick = () => {
         console.log("Search Button Clicked");
-        // Check if user is logged in, if they try and search without being logged in then make searchbar red, if user logged in then do normal
-        handleSearch(inputCity);
 
-        const savedCities = JSON.parse(localStorage.getItem('pastSearches')) || [];
-        const updatedCities = [inputCity, ...savedCities.filter(savedCity => savedCity !== inputCity)];
-        localStorage.setItem('pastSearches', JSON.stringify(updatedCities));
-        setPastSearches(updatedCities);
+        if (Auth.loggedIn()) {
+            handleSearch(inputCity);
+            const savedCities = JSON.parse(localStorage.getItem('pastSearches')) || [];
+            const updatedCities = [inputCity, ...savedCities.filter(savedCity => savedCity !== inputCity)];
+            localStorage.setItem('pastSearches', JSON.stringify(updatedCities));
+            setPastSearches(updatedCities);
+        } else {
+            console.log("User not logged in")
+        }
     };
 
     // Handling user past search clicks
