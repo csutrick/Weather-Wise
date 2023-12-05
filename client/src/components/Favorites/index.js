@@ -28,7 +28,7 @@ const Favorites = ({ handleSearch, favorites, setFavorites, profileId }) => {
     };
 
     return (
-        <section className='relative bg-white flex flex-col w-[100%] justify-center items-center py-1 px-2  rounded-lg border-2 border-black'>
+        <section className='bg-white flex flex-col w-[100%] justify-center items-center py-1 px-2  rounded-lg border-2 border-black drop-shadow-md'>
             <FaArrowDown onClick={() => setIsCollapsed((prevCollapsed) => !prevCollapsed)}
             className={`absolute top-1 right-1 text-gray-300 hover:text-gray-500 active:text-gray-800 text-2xl
             hover:scale-110 active:scale-125 transition-all duration-200 ease-in-out ${ isCollapsed ? 'rotate-180' : 'rotate-0' }`}/>

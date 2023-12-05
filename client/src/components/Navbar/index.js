@@ -41,8 +41,8 @@ const Navbar = () => {
             <></>
           )}
           <IoMdSettings onClick={() => showSettings(!settings)}
-          className='ml-2 md:ml-3 text-white font-bold text-3xl md:text-4xl transition-all duration-100 ease-in-out
-          hover:scale-105 hover:text-gray-300 active:scale-110'/>
+          className={`ml-2 md:ml-3 text-white font-bold text-3xl md:text-4xl transition-all duration-150 ease-in-out
+          hover:scale-105 hover:text-gray-300 active:scale-110 ${settings ? 'rotate-0' : '-rotate-45'}`}/>
           {settings && (
             <div className='absolute top-12 right-0 p-2 flex flex-col items-center justify-center
             bg-gray-600 rounded-lg'>
